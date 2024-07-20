@@ -1,0 +1,519 @@
+/* Styles génériques */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+    color: #5B473A;
+}
+
+.inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    font-variation-settings: "slnt" 0;
+}
+
+h1 {
+    color: #946140;
+    font-size: 145px;
+    font-weight: 200;
+    letter-spacing: 21.75px;
+    margin: 0;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    animation: fadeIn 2s forwards 1.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #5B473A;
+}
+
+/* NAVBAR STYLE */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar a {
+    color: #5B473A; /* Changement de la couleur du texte */
+    text-decoration: none;
+    margin: 0 25px;
+    font-size: 16px;
+    padding: 5px 20px;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    color: #d97e59;
+}
+
+/* IMGHEAD STYLE */
+.imgHead {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Styles pour footer */
+footer {
+    padding: 10px;
+    text-align: center;
+    color: #5B473A;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+h2 {
+    color: #5B473A;
+    font-weight: 100;
+    letter-spacing: 5px;
+}
+
+/*********************************************************************************************/
+/********************************************** STYLES INDEX ********************************/ 
+/*********************************************************************************************/
+
+.index-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('/medias/ACC.jpg') center center/cover;
+    background-color: black;
+    position: relative;
+}
+
+.index-h1 {
+    position: absolute;
+    top: 15vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.index-button {
+    display: inline-block;
+    position: absolute;
+    top: 50vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #5B473A;
+    font-size: 45px;
+    font-weight: 100;
+    margin: 0;
+    background: none;
+    border: 2px solid #5B473A;
+    border-radius: 50px;
+    padding: 10px 20px;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 2s forwards 2.5s;
+}
+
+.index-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #946140;
+}
+
+/*********************************************************************************************/
+/********************************************** STYLES ACCUEIL *******************************/
+/*********************************************************************************************/
+
+.accueil-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    position: relative;
+    padding-top: 80px; /* Ajuste cette valeur pour correspondre à la hauteur de la navbar */
+}
+
+/* Styles pour les articles */
+.articles {
+    display: flex;
+    justify-content: center; /* Centrer les articles */
+    margin: 20px 0;
+    padding: 0 10px;
+}
+
+.articles article {
+    flex: 1 1 calc(33.333% - 40px); /* Ajuste la largeur des articles pour trois colonnes */
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.article-img-container {
+    position: relative;
+}
+
+.article-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.article-title {
+    position: absolute;
+    top: 10px;
+    text-align: center;
+    color: rgb(182, 163, 141);
+    font-size: 24px;
+    margin: 0;
+    transition: transform 0.3s ease;
+    width: 100%;
+}
+
+.article-img-container:hover .article-title {
+    transform: scale(1.1);
+    color: rgb(210, 189, 166);
+}
+
+/* Styles pour les commentaires */
+.comments {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer les éléments de la section commentaires */
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    color: rgb(182, 163, 141);
+}
+
+.comments h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+button[type="submit"] {
+    background-color: #5B473A;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #946140;
+}
+
+/* Styles pour les commentaires affichés */
+.user-comments {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.comment {
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.comment strong {
+    font-size: 18px;
+}
+
+.comment span {
+    color: #FFD700;
+}
+
+
+/*********************************************************************************************/
+/********************************************** STYLES SERVICES *******************************/
+/*********************************************************************************************/
+
+/*********************************************************************************************/
+/********************************************** STYLES SERVICES *******************************/
+/*********************************************************************************************/
+
+.services-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    position: relative;
+    padding-top: 80px;   
+}
+
+/* Styles pour les articles */
+.services {
+    display: flex;
+    justify-content: center; /* Centrer les articles */
+    margin: 50px 0;
+    padding: 0 10px;
+}
+
+.services article {
+    flex: 1 1 calc(50% - 40px); /* Ajuste la largeur des articles pour deux colonnes */
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.services-img-container {
+    position: relative;
+}
+
+.services-img {
+    width: 100%;
+    height: 400px; /* Fixe la hauteur des images */
+    object-fit: cover; /* S'assure que l'image couvre bien son conteneur */
+    border-radius: 10px;
+}
+
+.services-title {
+    position: absolute;
+    top: -60px;
+    text-align: center;
+    color: rgb(182, 163, 141);
+    font-size: 24px;
+    margin: 20px 0 10px 0;
+    transition: transform 0.3s ease;
+    width: 100%;
+}
+
+.services-img-container:hover .services-title {
+    transform: scale(1.1) ;
+}
+
+
+
+/*********************************************************************************************/
+/********************************************** ESPECES ANIMAUX *******************************/
+/*********************************************************************************************/
+
+
+/* COLONNES animaux */
+.animal-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
+}
+
+/* INFOS animaux */
+.animal-info {
+    text-align: center;
+    background-color: rgba(110, 110, 110, 0.2); 
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    transition: transform 0.3s ease;
+    list-style: none;
+}
+
+.animal-info img {
+    width: 100%;
+    height: 300PX; 
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
+.animal-info:hover {
+    transform: scale(1.05);
+    
+}
+
+
+/*********************************************************************************************/
+/********************************************** HABITATS *************************************/
+/*********************************************************************************************/
+
+.habitats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 50px 0;
+    padding: 0 10px;
+    position: relative;
+    width: 452.94px; /* Ajusté pour que les images s'insèrent parfaitement */
+    height: 452.94px; /* Ajusté pour que les images s'insèrent parfaitement */
+}
+
+.habitats-img-container {
+    position: absolute;
+    width: 226.47px;
+    height: 226.47px;
+    overflow: hidden;
+}
+
+.habitats-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.habitats-img-container:nth-child(1) {
+    left: 0;
+    top: 0;
+    transform: rotate(0deg);
+    border-top-left-radius: 500px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.habitats-img-container:nth-child(2) {
+    left: 226.47px;
+    top: 0;
+    transform: rotate(90deg);
+    border-top-left-radius: 500px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.habitats-img-container:nth-child(3) {
+    left: 0;
+    top: 226.47px;
+    transform: rotate(-90deg);
+    border-top-left-radius: 500px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.habitats-img-container:nth-child(4) {
+    left: 226.47px;
+    top: 226.47px;
+    transform: rotate(180deg);
+    border-top-left-radius: 500px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.habitats-img-container:nth-child(2) .habitats-img, 
+.habitats-img-container:nth-child(2) .habitats-title {
+    transform: rotate(-90deg);
+}
+
+.habitats-img-container:nth-child(3) .habitats-img, 
+.habitats-img-container:nth-child(3) .habitats-title {
+    transform: rotate(90deg);
+}
+
+.habitats-img-container:nth-child(4) .habitats-img, 
+.habitats-img-container:nth-child(4) .habitats-title {
+    transform: rotate(-180deg);
+}
+
+.habitats-title {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 90%;
+}
+.habitats-img-container:nth-child(2) .habitats-title {
+    left: 10px;
+    top: 50%;
+
+
+
+/* Styles pour le titre principal */
+h2 {
+    color: #5B473A;
+    font-weight: 100;
+    letter-spacing: 5px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+
+
+
+/*********************************************************************************************/
+/********************************************** MEDIA QUERIES *******************************/
+/*********************************************************************************************/
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 90px;
+        letter-spacing: 15px;
+    }
+
+    button, .button, .index-button {
+        font-size: 20px;
+    }
+
+    .index-body {
+        background: url('/medias/mobi.jpg') no-repeat center center/cover;
+    }
+
+    .index-h1 {
+        top: 10vh;
+    }
+
+    .index-button {
+        top: 40vh;
+    }
+}

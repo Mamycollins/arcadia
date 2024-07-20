@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Vétérinaire - Zoo Arcadia</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="accueil-body" onload="includeHTML()">
+    <header w3-include-html="/assets/header.html"></header>
+
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+    <!--------------------------------------- Section principale ------------------------------------>
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+
+    <main>
+        <section class="vet-section">
+            <h2>Tableau de Bord Vétérinaire</h2>
+            <nav>
+                <ul>
+                    <li><a href="dashboard_vet.html">Accueil</a></li>
+                    <li><a href="animal_health.html">Santé des animaux</a></li>
+                    <li><a href="medical_reports.html">Rapports médicaux</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section>
+            <h2>Bienvenue, Vétérinaire</h2>
+            <p>Utilisez les options ci-dessus pour gérer la santé des animaux et les rapports médicaux.</p>
+        </section>
+        <section>
+            <h2>Santé des Animaux</h2>
+            <div id="animal_health"></div>
+        </section>
+    </main>
+
+    <footer w3-include-html="/assets/footer_dash.html"></footer>
+
+    <script src="/js/include.js"></script>
+    <script src="/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Exemple de données de santé des animaux
+            const animalHealth = [
+                { animal: "Lion", status: "En bonne santé" },
+                { animal: "Éléphant", status: "Suivi médical" },
+                { animal: "Girafe", status: "En bonne santé" }
+            ];
+
+            // Afficher les données de santé des animaux
+            const animalHealthDiv = document.getElementById('animal_health');
+            animalHealth.forEach(animal => {
+                const animalDiv = document.createElement('div');
+                animalDiv.textContent = `${animal.animal} - ${animal.status}`;
+                animalHealthDiv.appendChild(animalDiv);
+            });
+        });
+    </script>
+</body>
+</html>

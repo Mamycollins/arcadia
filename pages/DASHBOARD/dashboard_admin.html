@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcadia</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="accueil-body" onload="includeHTML()">
+    <header w3-include-html="/assets/header.html"></header>
+
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+    <!--------------------------------------- Section principale ------------------------------------>
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+
+    <main>
+        <section>
+            <h2>Bienvenue, Administrateur</h2>
+            <p>Utilisez les options ci-dessus pour gérer le site.</p>
+        </section>
+        <section>
+            <h2>Utilisateurs</h2>
+            <div id="users"></div>
+        </section>
+    </main>
+
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+    <!--------------------------------------- FOOTER------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+
+    <footer w3-include-html="/assets/footer_dash.html"></footer>
+
+    <script>
+        // Exemple de données utilisateur
+        const users = [
+            { name: "Alice", role: "Employé" },
+            { name: "Bob", role: "Vétérinaire" },
+            { name: "Charlie", role: "Administrateur" }
+        ];
+
+        // Afficher les utilisateurs
+        const usersDiv = document.getElementById('users');
+        users.forEach(user => {
+            const userDiv = document.createElement('div');
+            userDiv.textContent = `${user.name} - ${user.role}`;
+            usersDiv.appendChild(userDiv);
+        });
+
+        // Fonction pour inclure HTML
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /* Loop through a collection of all HTML elements: */
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain atrribute:*/
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                    /* Make an HTTP request using the attribute value as the file name: */
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                            /* Remove the attribute, and call this function once more: */
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    
+                    return;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
