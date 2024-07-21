@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petit Train - Zoo Arcadia</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="accueil-body" onload="includeHTML()">
+    <header w3-include-html="/assets/header.html"></header>
+
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+    <!--------------------------------------- Section principale ------------------------------------>
+    <!----------------------------------------------------------------------------------------------->
+    <!----------------------------------------------------------------------------------------------->
+
+    <main>
+        <section class="train-section">
+            <h2>Service de Petit Train</h2>
+            <p>
+                Bienvenue à bord du petit train du Zoo Arcadia ! Ce service est conçu pour offrir à nos visiteurs une manière
+                confortable et amusante de découvrir l'ensemble du parc. Montez à bord et profitez d'une visite guidée à travers
+                les différents habitats et zones thématiques du zoo.
+            </p>
+        </section>
+        <section class="schedule-section">
+            <h2>Horaires</h2>
+            <p>
+                Le petit train circule tous les jours aux horaires suivants :
+            </p>
+            <ul id="train-schedule">
+
+                <!-- Horaires cf JavaScript -->
+
+            </ul>
+        </section>
+        <section class="stops-section">
+            <h2>Stations et Arrêts</h2>
+            <p>
+                Le petit train s'arrête à plusieurs points stratégiques du parc pour vous permettre de descendre et explorer
+                chaque zone à votre rythme :
+            </p>
+            <ul>
+                <li>Entrée Principale</li>
+                <li>Habitat des Lions</li>
+                <li>Forêt Tropicale</li>
+                <li>Section des Oiseaux</li>
+                <li>Ferme Pédagogique</li>
+                <li>Sortie</li>
+            </ul>
+        </section>
+        <section class="tickets-section">
+            <h2>Billetterie</h2>
+            <p>
+                Les billets pour le petit train peuvent être achetés à l'entrée du parc ou directement aux arrêts du train. Les
+                tarifs sont les suivants :
+            </p>
+            <ul>
+                <li>Adultes : 5€</li>
+                <li>Enfants (3-12 ans) : 3€</li>
+                <li>Enfants (moins de 3 ans) : Gratuit</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer w3-include-html="/assets/footer.html"></footer>
+
+    <script src="/js/include.js"></script>
+    <script src="/js/script.js"></script>
+    <script>
+        
+        const trainSchedule = [
+            { time: "10:00", description: "Premier départ de la journée" },
+            { time: "11:30", description: "Départ pour la section des Lions" },
+            { time: "13:00", description: "Départ pour la Forêt Tropicale" },
+            { time: "14:30", description: "Départ pour la Section des Oiseaux" },
+            { time: "16:00", description: "Départ pour la Ferme Pédagogique" },
+            { time: "17:30", description: "Dernier tour de la journée" }
+        ];
+
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const scheduleList = document.getElementById('train-schedule');
+            trainSchedule.forEach(schedule => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${schedule.time} - ${schedule.description}`;
+                scheduleList.appendChild(listItem);
+            });
+        });
+    </script>
+</body>
+</html>

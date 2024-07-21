@@ -3,59 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de Bord Vétérinaire - Zoo Arcadia</title>
+    <title>Dashboard Vétérinaire - Zoo Arcadia</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body class="accueil-body" onload="includeHTML()">
     <header w3-include-html="/assets/header.html"></header>
 
-    <!----------------------------------------------------------------------------------------------->
-    <!----------------------------------------------------------------------------------------------->
-    <!--------------------------------------- Section principale ------------------------------------>
-    <!----------------------------------------------------------------------------------------------->
-    <!----------------------------------------------------------------------------------------------->
-
     <main>
         <section class="vet-section">
-            <h2>Tableau de Bord Vétérinaire</h2>
-            <nav>
-                <ul>
-                    <li><a href="dashboard_vet.html">Accueil</a></li>
-                    <li><a href="animal_health.html">Santé des animaux</a></li>
-                    <li><a href="medical_reports.html">Rapports médicaux</a></li>
-                </ul>
-            </nav>
-        </section>
-        <section>
             <h2>Bienvenue, Vétérinaire</h2>
-            <p>Utilisez les options ci-dessus pour gérer la santé des animaux et les rapports médicaux.</p>
+            <p>Utilisez les options ci-dessous pour gérer la santé des animaux.</p>
         </section>
-        <section>
-            <h2>Santé des Animaux</h2>
-            <div id="animal_health"></div>
+
+        <!-- Section Gestion des Dossiers Médicaux -->
+        <section class="management-section">
+            <h3>Gestion des Dossiers Médicaux</h3>
+            <form id="medical-record-form">
+                <div class="form-group">
+                    <label for="animal-id">ID de l'Animal :</label>
+                    <input type="text" id="animal-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="medical-notes">Notes Médicales :</label>
+                    <textarea id="medical-notes" required></textarea>
+                </div>
+                <button type="button" onclick="addMedicalRecord()">Ajouter Dossier Médical</button>
+            </form>
+            <div id="medical-record-list">
+                <!-- Liste des dossiers médicaux dynamiquement remplie par JavaScript -->
+            </div>
+        </section>
+
+        <!-- Section Informations Utiles -->
+        <section class="management-section">
+            <h3>Informations Utiles</h3>
+            <div id="useful-info">
+                <!-- Contenu dynamiquement rempli par JavaScript -->
+            </div>
         </section>
     </main>
 
-    <footer w3-include-html="/assets/footer_dash.html"></footer>
+    <footer w3-include-html="/assets/footer.html"></footer>
 
     <script src="/js/include.js"></script>
     <script src="/js/script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Exemple de données de santé des animaux
-            const animalHealth = [
-                { animal: "Lion", status: "En bonne santé" },
-                { animal: "Éléphant", status: "Suivi médical" },
-                { animal: "Girafe", status: "En bonne santé" }
-            ];
+        function addMedicalRecord() {
+            const animalId = document.getElementById('animal-id').value;
+            const medicalNotes = document.getElementById('medical-notes').value;
+            const medicalRecordList = document.getElementById('medical-record-list');
 
-            // Afficher les données de santé des animaux
-            const animalHealthDiv = document.getElementById('animal_health');
-            animalHealth.forEach(animal => {
-                const animalDiv = document.createElement('div');
-                animalDiv.textContent = `${animal.animal} - ${animal.status}`;
-                animalHealthDiv.appendChild(animalDiv);
-            });
+            if (animalId && medicalNotes) {
+                const recordItem = document.createElement('div');
+                recordItem.className = 'record-item';
+                recordItem.innerHTML = `<p>ID de l'Animal: ${animalId}</p><p>Notes Médicales: ${medicalNotes}</p>`;
+                medicalRecordList.appendChild(recordItem);
+
+                // Réinitialiser le formulaire
+                document.getElementById('medical-record-form').reset();
+            } else {
+                alert('Veuillez remplir tous les champs.');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const usefulInfoDiv = document.getElementById('useful-info');
+            const usefulInfoData = {
+                emergencyContact: 'Contact d\'urgence : 01 23 45 67 89',
+                nextCheckup: 'Prochain contrôle de routine : 15/08/2024',
+                vaccinationSchedule: 'Calendrier de vaccination : Vérifiez les dossiers médicaux pour les dates spécifiques.'
+            }; // Exemple de données
+
+            usefulInfoDiv.innerHTML = `
+                <p>Contact d'urgence : ${usefulInfoData.emergencyContact}</p>
+                <p>Prochain contrôle de routine : ${usefulInfoData.nextCheckup}</p>
+                <p>Calendrier de vaccination : ${usefulInfoData.vaccinationSchedule}</p>
+            `;
         });
     </script>
 </body>

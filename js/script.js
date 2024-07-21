@@ -101,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
     .catch(error => console.error('Error loading the animal data: ', error));
 });
 
-// Fonction pour remplacer le lien "Connexion" par "Déconnexion"
 
 function updateNavLink() {
     // Remplacer le lien "Connexion" par "Déconnexion"

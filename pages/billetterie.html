@@ -3,79 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcadia</title>
+    <title>Billetterie - Zoo Arcadia</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body class="accueil-body" onload="includeHTML()">
     <header w3-include-html="/assets/header.html"></header>
 
-    <!----------------------------------------------------------------------------------------------->
-    <!----------------------------------------------------------------------------------------------->
-    <!--------------------------------------- Section principale ------------------------------------>
-    <!----------------------------------------------------------------------------------------------->
-    <!----------------------------------------------------------------------------------------------->
-
     <main>
-        <section>
-            <h2>Bienvenue, Administrateur</h2>
-            <p>Utilisez les options ci-dessus pour gérer le site.</p>
-        </section>
-        <section>
-            <h2>Utilisateurs</h2>
-            <div id="users"></div>
+        <section class="ticket-section">
+            <h2>Réservation de Billets</h2>
+            <form id="ticket-form">
+                <div class="form-group">
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                </div>
+                <div class="form-group">
+                    <label for="adultes">Nombre de visiteurs adultes :</label>
+                    <input type="number" id="adultes" name="adultes" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="enfants">Nombre de visiteurs enfants (-12 ans) :</label>
+                    <input type="number" id="enfants" name="enfants" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Adresse email :</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telephone">Numéro de téléphone :</label>
+                    <input type="tel" id="telephone" name="telephone" required>
+                </div>
+                <button type="button" onclick="submitForm()">Réserver</button>
+            </form>
+            <div id="confirmation-message" style="display:none;">Votre réservation a été envoyée avec succès !</div>
         </section>
     </main>
 
-    <!----------------------------------------------------------------------------------------------->
-    <!----------------------------------------------------------------------------------------------->
-    <!--------------------------------------- FOOTER------------------------------------------------->
-    <!----------------------------------------------------------------------------------------------->
-    <!----------------------------------------------------------------------------------------------->
-
     <footer w3-include-html="/assets/footer.html"></footer>
 
+    <script src="/js/include.js"></script>
+    <script src="/js/script.js"></script>
     <script>
-        // Exemple de données utilisateur
-        const users = [
-            { name: "Alice", role: "Employé" },
-            { name: "Bob", role: "Vétérinaire" },
-            { name: "Charlie", role: "Administrateur" }
-        ];
+        function submitForm() {
+            const nom = document.getElementById('nom').value;
+            const prenom = document.getElementById('prenom').value;
+            const adultes = document.getElementById('adultes').value;
+            const enfants = document.getElementById('enfants').value;
+            const email = document.getElementById('email').value;
+            const telephone = document.getElementById('telephone').value;
 
-        // Afficher les utilisateurs
-        const usersDiv = document.getElementById('users');
-        users.forEach(user => {
-            const userDiv = document.createElement('div');
-            userDiv.textContent = `${user.name} - ${user.role}`;
-            usersDiv.appendChild(userDiv);
-        });
+            if (nom && prenom && adultes >= 0 && enfants >= 0 && email && telephone) {
+                const emailContent = `
+                    Nom: ${nom}\n
+                    Prénom: ${prenom}\n
+                    Nombre de visiteurs adultes: ${adultes}\n
+                    Nombre de visiteurs enfants: ${enfants}\n
+                    Adresse email: ${email}\n
+                    Numéro de téléphone: ${telephone}
+                `;
 
-        // Fonction pour inclure HTML
-        function includeHTML() {
-            var z, i, elmnt, file, xhttp;
-            /* Loop through a collection of all HTML elements: */
-            z = document.getElementsByTagName("*");
-            for (i = 0; i < z.length; i++) {
-                elmnt = z[i];
-                /*search for elements with a certain atrribute:*/
-                file = elmnt.getAttribute("w3-include-html");
-                if (file) {
-                    /* Make an HTTP request using the attribute value as the file name: */
-                    xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function() {
-                        if (this.readyState == 4) {
-                            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-                            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-                            /* Remove the attribute, and call this function once more: */
-                            elmnt.removeAttribute("w3-include-html");
-                            includeHTML();
-                        }
-                    }
-                    xhttp.open("GET", file, true);
-                    xhttp.send();
-                    /* Exit the function: */
-                    return;
-                }
+                alert(`Envoi de l'email : \n\n${emailContent}`);
+                document.getElementById('confirmation-message').style.display = 'block';
+                document.getElementById('ticket-form').reset();
+            } else {
+                alert('Veuillez remplir tous les champs.');
             }
         }
     </script>

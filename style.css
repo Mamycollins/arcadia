@@ -104,8 +104,19 @@ h2 {
     letter-spacing: 5px;
 }
 
+input,
+select,
+textarea {
+    background-color: rgba(208, 208, 208, 0.42); 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+
 /*********************************************************************************************/
-/********************************************** STYLES INDEX ********************************/ 
+/********************************************** STYLES INDEX *********************************/ 
 /*********************************************************************************************/
 
 .index-body {
@@ -161,10 +172,11 @@ h2 {
     align-items: center;
     background-color: black;
     position: relative;
-    padding-top: 80px; /* Ajuste cette valeur pour correspondre à la hauteur de la navbar */
+    margin: 0 25px 15px 25px;
+    padding-top: 80px; /* Hauteur de la navbar */
 }
 
-/* Styles pour les articles */
+/* Styles articles */
 .articles {
     display: flex;
     justify-content: center; /* Centrer les articles */
@@ -207,11 +219,11 @@ h2 {
     color: rgb(210, 189, 166);
 }
 
-/* Styles pour les commentaires */
+/* Styles commentaires */
 .comments {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centrer les éléments de la section commentaires */
+    align-items: center; 
     margin: 20px 0;
     padding: 20px;
     border-radius: 10px;
@@ -281,9 +293,6 @@ button[type="submit"]:hover {
 /********************************************** STYLES SERVICES *******************************/
 /*********************************************************************************************/
 
-/*********************************************************************************************/
-/********************************************** STYLES SERVICES *******************************/
-/*********************************************************************************************/
 
 .services-body {
     display: flex;
@@ -294,10 +303,10 @@ button[type="submit"]:hover {
     padding-top: 80px;   
 }
 
-/* Styles pour les articles */
+/* Styles articles */
 .services {
     display: flex;
-    justify-content: center; /* Centrer les articles */
+    justify-content: center; 
     margin: 50px 0;
     padding: 0 10px;
 }
@@ -487,7 +496,174 @@ h2 {
     margin-top: 50px;
 }
 
+/*********************************************************************************************/
+/********************************************** PARC STYLES *******************************/
+/*********************************************************************************************/
 
+..history-section, .projects-section, .ambitions-section, .convictions-section {
+    margin: 20px auto;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+.history-section h2, .projects-section h2, .ambitions-section h2, .convictions-section h2 {
+    color: #ffa500;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.history-section p, .projects-section p, .ambitions-section p, .convictions-section p,
+.history-section ul, .projects-section ul, .ambitions-section ul, .convictions-section ul {
+    text-align: justify;
+    margin: 0 15px;
+}
+
+.history-section ul, .projects-section ul, .ambitions-section ul, .convictions-section ul {
+    padding-left: 20px;
+}
+
+/*********************************************************************************************/
+/********************************************** BILLETS. STYLES *******************************/
+/*********************************************************************************************/
+
+.ticket-section {
+    background-color: #fff;
+    padding: 20px;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.ticket-section h2 {
+    text-align: center;
+    color: #ffa500;
+    margin-bottom: 20px;
+}
+
+.ticket-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 15px;
+}
+
+.ticket-section label {
+    flex: 1;
+    margin-right: 10px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.ticket-section input[type="text"],
+.ticket-section input[type="number"],
+.ticket-section input[type="email"],
+.ticket-section input[type="tel"] {
+    flex: 2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.ticket-section button {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    background-color: #ffa500;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ticket-section button:hover {
+    background-color: #e69500;
+}
+
+#confirmation-message {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+/*********************************************************************************************/
+/********************************************** DASHBOARD ************************************/
+/*********************************************************************************************/
+
+.management-section {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+
+.management-section h3 {
+    text-align: center;
+    color: #ffa500;
+    margin-bottom: 20px;
+}
+
+.management-section .form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.management-section label {
+    flex: 1;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.management-section input[type="text"],
+.management-section input[type="email"],
+.management-section input[type="password"],
+.management-section input[type="number"],
+.management-section textarea,
+.management-section select {
+    flex: 2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #e6e6e6;
+}
+
+.management-section button {
+    padding: 10px 20px;
+    background-color: #ffa500;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.management-section button:hover {
+    background-color: #e69500;
+}
 
 
 
