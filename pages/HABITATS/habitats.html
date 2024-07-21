@@ -3,34 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcadia</title>
+    <title>Habitat</title>
     <link rel="stylesheet" href="/style.css">
+    <style>
+        .habitat-body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .habitat-body.bg-savane::before {
+            background-image: url('/medias/savane.jpg');
+            opacity: 0.3;
+        }
+
+        .habitat-body.bg-jungle::before {
+            background-image: url('/medias/jungle.jpg');
+            opacity: 0.3;
+        }
+
+        .habitat-body.bg-marais::before {
+            background-image: url('/medias/marais.jpg');
+            opacity: 0.3;
+        }
+
+        .habitat-body.bg-foret::before {
+            background-image: url('/medias/foret.jpg');
+            opacity: 0.3;
+        }
+    </style>
 </head>
-<body class="accueil-body" onload="includeHTML()">
+<body class="habitat-body">
     <header w3-include-html="/assets/header.html"></header>
 
-    <h2>HABITATS</h2>
-
-    <section class="habitats">
-        <div class="habitats-img-container">
-            <img src="/medias/savane.jpg" alt="Savane" class="habitats-img">
-            <h2 class="habitats-title">Savane</h2>
+    <main>
+        <h2>Les habitats</h2>
+        <div class="habitats">
+            <div class="habitats-img-container" data-bg="bg-savane">
+                <a href="/pages/HABITATS/savane.html"><img src="/medias/savane.jpg" alt="Savane" class="habitats-img"></a>
+                
+            </div>
+            <div class="habitats-img-container" data-bg="bg-jungle">
+                <a href="/pages/HABITATS/jungle.html"><img src="/medias/jungle.jpg" alt="Jungle" class="habitats-img"></a>
+                
+            </div>
+            <div class="habitats-img-container" data-bg="bg-marais">
+                <a href="/pages/HABITATS/marais.html"><img src="/medias/marais.jpg" alt="Marais" class="habitats-img"></a>
+                
+            </div>
+            <div class="habitats-img-container" data-bg="bg-foret">
+                <a href="/pages/HABITATS/foret.html"><img src="/medias/foret.jpg" alt="Forêt" class="habitats-img"></a>
+                
+            </div>
         </div>
-        <div class="habitats-img-container">
-            <img src="/medias/marais.jpg" alt="Marais" class="habitats-img">
-            <h2 class="habitats-title">Marais</h2>
-        </div>
-        <div class="habitats-img-container">
-            <img src="/medias/jungle.jpg" alt="Jungle" class="habitats-img">
-            <h2 class="habitats-title">Jungle</h2>
-        </div>
-        <div class="habitats-img-container">
-            <img src="/medias/foret.jpg" alt="Forêt" class="habitats-img">
-            <h2 class="habitats-title">Forêt</h2>
-        </div>
-    </section>
+    </main>
 
     <footer w3-include-html="/assets/footer.html"></footer>
-    <script src="/JS/include.js"></script> <!-- S'assurer que ce chemin est correct -->
+    <script src="/js/include.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const habitatBody = document.querySelector('.habitat-body');
+            document.querySelectorAll('.habitats-img-container').forEach(container => {
+                container.addEventListener('mouseover', () => {
+                    habitatBody.classList.add(container.getAttribute('data-bg'));
+                });
+                container.addEventListener('mouseout', () => {
+                    habitatBody.classList.remove(container.getAttribute('data-bg'));
+                });
+            });
+        });
+    </script>
 </body>
 </html>

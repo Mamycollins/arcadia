@@ -1,4 +1,4 @@
-const animalsData = [
+let animalsData = JSON.parse(localStorage.getItem('animalsData')) || [
     {
         nom: "Whisky le Loup",
         nomScientifique: "Canis lupus",
@@ -17,4 +17,10 @@ const animalsData = [
         nourriture: "Viande",
         photo: "/medias/georges.jpg"
     }
+    // Ajoutez d'autres animaux ici
 ];
+
+function updateAnimalLocalStorage() {
+    localStorage.setItem('animalsData', JSON.stringify(animalsData));
+}
+updateAnimalLocalStorage();

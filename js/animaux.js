@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('animal-modal');
     const modalContent = document.getElementById('modal-content');
 
-    animauxData.forEach(animal => {
+    animalsData.forEach(animal => {
         const card = document.createElement('div');
         card.className = 'animal-card';
         card.innerHTML = `
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             modal.style.display = 'block';
 
-            // Attacher l'événement de fermeture
+            
             document.getElementById('close-modal').addEventListener('click', () => {
                 modal.style.display = 'none';
             });
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         container.appendChild(card);
     });
 
-    // Fermer la modal en cliquant en dehors de celle-ci
+    // Fermer modal onclick ext
     window.addEventListener('click', (event) => {
         if (event.target == modal) {
             modal.style.display = 'none';

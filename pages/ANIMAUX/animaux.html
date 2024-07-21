@@ -6,6 +6,7 @@
     <title>Arcadia</title>
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body class="accueil-body" onload="includeHTML()">
     <header w3-include-html="/assets/header.html"></header>
 
@@ -15,15 +16,13 @@
     <!----------------------------------------------------------------------------------------------->
     <!----------------------------------------------------------------------------------------------->
 
-    <div class="animal-container">
-        <!-- Contenu généré dynamiquement par JavaScript -->
-    </div>
+
+    <div class="animal-container"></div>
 
     <div id="animal-modal">
-        <div id="modal-content">
-            <!-- Contenu généré dynamiquement par JavaScript -->
-        </div>
+        <div id="modal-content"></div>
     </div>
+
 
     <!----------------------------------------------------------------------------------------------->
     <!----------------------------------------------------------------------------------------------->
@@ -31,9 +30,11 @@
     <!----------------------------------------------------------------------------------------------->
     <!----------------------------------------------------------------------------------------------->
 
+
+
     <footer w3-include-html="/assets/footer.html"></footer>
-    <script src="/js/include.js"></script> <!-- S'assurer que ce chemin est correct -->
-    <script src="/js/data.js"></script> <!-- Inclure le fichier de données -->
-    <script src="/js/animaux.js"></script> <!-- Inclure le fichier de script -->
+    <script src="/js/include.js"></script>
+    <script src="/js/animalData.js"></script>
+    <script src="/js/animaux.js"></script>
 </body>
 </html>

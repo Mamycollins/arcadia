@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const animalList = document.getElementById('animal-list');
 
     function renderAnimalList() {
-        animalList.innerHTML = ''; // Clear the list
+        animalList.innerHTML = '';
 
         animalsData.forEach((animal, index) => {
             const animalItem = document.createElement('div');
@@ -20,9 +20,14 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             animalList.appendChild(animalItem);
         });
+
+        // Maj table des animaux sur la page animaux.html
+        renderAnimalTable();
     }
 
-    window.saveAnimal = function() {
+    window.saveAnimal = function(event) {
+        event.preventDefault();
+
         const id = document.getElementById('animal-id').value;
         const nom = document.getElementById('animal-nom').value;
         const nomScientifique = document.getElementById('animal-scientifique').value;
@@ -32,20 +37,24 @@ document.addEventListener('DOMContentLoaded', function() {
         const nourriture = document.getElementById('animal-nourriture').value;
         const photo = document.getElementById('animal-photo').value;
 
+        if (!nom || !nomScientifique || !habitat || !description || !etatSante || !nourriture || !photo) {
+            alert("Tous les champs doivent être remplis");
+            return;
+        }
+
         const animalData = { nom, nomScientifique, habitat, description, etatSante, nourriture, photo };
 
         if (id === '') {
-            // Ajouter un nouvel animal
-            animalData.id = animalsData.length + 1;
+            // Ajout nouvel animal
             animalsData.push(animalData);
         } else {
-            // Modifier un animal existant
-            animalsData[id] = { id: parseInt(id), ...animalData };
+            // Modifier animal existant
+            animalsData[id] = { ...animalData };
         }
 
+        updateLocalStorage();
         animalForm.reset();
         renderAnimalList();
-        renderAnimalTable();
     };
 
     window.editAnimal = function(index) {
@@ -62,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.deleteAnimal = function(index) {
         animalsData.splice(index, 1);
+        updateLocalStorage();
         renderAnimalList();
-        renderAnimalTable();
     };
 
     renderAnimalList();

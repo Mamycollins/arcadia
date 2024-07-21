@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcadia - Savane</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="accueil-body" onload="includeHTML(); displaySavaneAnimals()">
+    <header w3-include-html="/assets/header.html"></header>
+
+    <main>
+        <h2>Animaux de la Savane</h2>
+        <div id="savane-animals" class="animal-container">
+            <!-- Les animaux de la savane seront affichés ici -->
+        </div>
+    </main>
+
+    <div id="animalModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="modalCaption"></div>
+    </div>
+
+    <footer w3-include-html="/assets/footer.html"></footer>
+    <script src="/js/include.js"></script>
+    <script src="/js/animalData.js"></script>
+    <script src="/js/modal.js"></script>
+    <script>
+        function displaySavaneAnimals() {
+            const container = document.getElementById('savane-animals');
+            container.innerHTML = ''; // Clear any existing content
+
+            animalsData.forEach(animal => {
+                if (animal.habitat.toLowerCase() === 'savane') {
+                    const card = document.createElement('div');
+                    card.className = 'animal-card';
+                    card.innerHTML = `
+                        <img src="${animal.photo}" alt="${animal.nom}" class="animal-img" onclick="openModal('${animal.photo}', '${animal.nom}', '${animal.nomScientifique}', '${animal.description}', '${animal.etatSante}', '${animal.nourriture}')">
+                        <div class="animal-name">${animal.nom}</div>
+                        <div class="animal-description">${animal.description}</div>
+                    `;
+                    container.appendChild(card);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
