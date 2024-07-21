@@ -9,51 +9,21 @@
 <body class="accueil-body" onload="includeHTML()">
     <header w3-include-html="/assets/header.html"></header>
 
-
     <!----------------------------------------------------------------------------------------------->
     <!----------------------------------------------------------------------------------------------->
     <!--------------------------------------- Section principale ------------------------------------>
     <!----------------------------------------------------------------------------------------------->
     <!----------------------------------------------------------------------------------------------->
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Photo</th>
-                <th>Nom</th>
-                <th>Nom Scientifique</th>
-                <th>Habitat</th>
-                <th>Description</th>
-                <th>État de Santé</th>
-                <th>Nourriture</th>
-                <th>Date de Passage</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><img src="/medias/whisky.jpg" alt="Whisky le Loup" width="100"></td>
-                <td>Whisky le Loup</td>
-                <td>Canis lupus</td>
-                <td>Forêt</td>
-                <td>Un loup intelligent et rusé, connu pour son agilité et sa force.</td>
-                <td>Bonne santé</td>
-                <td>Viande crue</td>
-                <td>2024-07-19</td>
-            </tr>
-            <tr>
-                <td><img src="/medias/georges.jpg" alt="Georges le Lion" width="100"></td>
-                <td>Georges le Lion</td>
-                <td>Panthera leo</td>
-                <td>Savane</td>
-                <td>Un lion majestueux, souvent appelé le roi de la savane.</td>
-                <td>Excellente santé</td>
-                <td>Viande</td>
-                <td>2024-07-19</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="animal-container">
+        <!-- Contenu généré dynamiquement par JavaScript -->
+    </div>
 
-
+    <div id="animal-modal">
+        <div id="modal-content">
+            <!-- Contenu généré dynamiquement par JavaScript -->
+        </div>
+    </div>
 
     <!----------------------------------------------------------------------------------------------->
     <!----------------------------------------------------------------------------------------------->
@@ -62,6 +32,8 @@
     <!----------------------------------------------------------------------------------------------->
 
     <footer w3-include-html="/assets/footer.html"></footer>
-    <script src="/JS/include.js"></script> <!-- S'assurer que ce chemin est correct -->
+    <script src="/js/include.js"></script> <!-- S'assurer que ce chemin est correct -->
+    <script src="/js/data.js"></script> <!-- Inclure le fichier de données -->
+    <script src="/js/animaux.js"></script> <!-- Inclure le fichier de script -->
 </body>
 </html>

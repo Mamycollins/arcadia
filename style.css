@@ -383,6 +383,89 @@ button[type="submit"]:hover {
     
 }
 
+/* Styles pour les cartes d'animaux */
+.animal-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.animal-card {
+    position: relative;
+    width: 200px;
+    margin: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.animal-card:hover {
+    transform: scale(1.05);
+}
+
+.animal-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.animal-name {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Styles pour la modal */
+#animal-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+#modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.animal-img-modal {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
 
 /*********************************************************************************************/
 /********************************************** HABITATS *************************************/
@@ -663,6 +746,76 @@ h2 {
 
 .management-section button:hover {
     background-color: #e69500;
+}
+
+
+/*********************************************************************************************/
+/********************************************** GESTION ANIMAUX *******************************/
+/*********************************************************************************************/
+
+/* Styles communs pour les sections de gestion */
+.admin-section {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+
+.admin-section h2,
+.admin-section h3 {
+    text-align: center;
+    color: #ffa500;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.item p {
+    margin: 5px 0;
+}
+
+.item button {
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #ffa500;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.item button:hover {
+    background-color: #cc8400;
 }
 
 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Animaux - Zoo Arcadia</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="accueil-body" onload="includeHTML()">
+    <header w3-include-html="/assets/header.html"></header>
+
+    <main>
+        <section class="admin-section">
+            <h2>Gestion des Animaux</h2>
+
+            <form id="animal-form">
+                <input type="hidden" id="animal-id">
+                <div class="form-group">
+                    <label for="animal-nom">Nom :</label>
+                    <input type="text" id="animal-nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="animal-scientifique">Nom Scientifique :</label>
+                    <input type="text" id="animal-scientifique" required>
+                </div>
+                <div class="form-group">
+                    <label for="animal-habitat">Habitat :</label>
+                    <input type="text" id="animal-habitat" required>
+                </div>
+                <div class="form-group">
+                    <label for="animal-description">Description :</label>
+                    <textarea id="animal-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="animal-sante">État de Santé :</label>
+                    <input type="text" id="animal-sante" required>
+                </div>
+                <div class="form-group">
+                    <label for="animal-nourriture">Nourriture :</label>
+                    <input type="text" id="animal-nourriture" required>
+                </div>
+                <div class="form-group">
+                    <label for="animal-photo">URL Photo :</label>
+                    <input type="text" id="animal-photo" required>
+                </div>
+                <button type="button" onclick="saveAnimal()">Enregistrer</button>
+            </form>
+        </section>
+
+        <section class="admin-section">
+            <h3>Liste des Animaux</h3>
+            <div id="animal-list">
+                <!-- Liste des animaux dynamiquement remplie par JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer w3-include-html="/assets/footer.html"></footer>
+    <script src="/js/include.js"></script>
+    <script src="/js/animalData.js"></script>
+    <script src="/js/gestionAnimaux.js"></script>
+</body>
+</html>

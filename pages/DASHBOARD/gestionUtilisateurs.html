@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Utilisateurs - Zoo Arcadia</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="accueil-body" onload="includeHTML()">
+    <header w3-include-html="/assets/header.html"></header>
+
+    <main>
+        <section class="admin-section">
+            <h2>Gestion des Utilisateurs</h2>
+
+            <form id="user-form">
+                <input type="hidden" id="user-id">
+                <div class="form-group">
+                    <label for="user-email">Email :</label>
+                    <input type="email" id="user-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-nom">Nom :</label>
+                    <input type="text" id="user-nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-role">Rôle :</label>
+                    <select id="user-role" required>
+                        <option value="Employé">Employé</option>
+                        <option value="Vétérinaire">Vétérinaire</option>
+                        <option value="Administrateur">Administrateur</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="user-password">Mot de Passe :</label>
+                    <input type="password" id="user-password" required>
+                </div>
+                <button type="button" onclick="saveUser()">Enregistrer</button>
+            </form>
+        </section>
+
+        <section class="admin-section">
+            <h3>Liste des Utilisateurs</h3>
+            <div id="user-list">
+                <!-- Liste des utilisateurs dynamiquement remplie par JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer w3-include-html="/assets/footer.html"></footer>
+    <script src="/js/include.js"></script>
+    <script src="/js/userData.js"></script>
+    <script src="/js/gestionUtilisateurs.js"></script>
+</body>
+</html>
