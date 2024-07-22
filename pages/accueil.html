@@ -6,17 +6,8 @@
     <title>Arcadia</title>
     <link rel="stylesheet" href="/style.css">
 </head>
-<body class="accueil-body" onload="includeHTML()">
+<body class="accueil-body" onload="includeHTML(); loadComments()">
     <header w3-include-html="/assets/header.html"></header>
-
-
-    <!----------------------------------------------------------------------------------------------->
-    <!----------------------------------------------------------------------------------------------->
-    <!--------------------------------------- Section principale ------------------------------------>
-    <!----------------------------------------------------------------------------------------------->
-    <!----------------------------------------------------------------------------------------------->
-
-
 
     <main>
         <section class="articles">
@@ -25,27 +16,24 @@
                     <img src="/medias/terrarium.png" alt="Ouverture du terrarium" class="article-img">
                     <h2 class="article-title">Ouverture du Terrarium</h2>
                 </div>
-                
             </article>
             <article>
                 <div class="article-img-container">
                     <img src="/medias/aquarium.png" alt="À venir : l'aquarium" class="article-img">
                     <h2 class="article-title">À Venir : L'Aquarium</h2>
                 </div>
-                
             </article>
             <article>
                 <div class="article-img-container">
                     <img src="/medias/juno.png" alt="Naissance : Juno" class="article-img">
                     <h2 class="article-title">Naissance : Juno</h2>
                 </div>
-         
             </article>
         </section>
         
         <section class="comments">
             <h2>Laisser un commentaire</h2>
-            <form>
+            <form id="comment-form">
                 <div class="form-group">
                     <label for="name">Nom:</label>
                     <input type="text" id="name" name="name" required>
@@ -66,23 +54,15 @@
                 </div>
                 <button type="submit">Envoyer</button>
             </form>
-            <div class="user-comments">
-                <!-- Exemple de commentaire affiché -->
-                <div class="comment">
-                    <p><strong>Pseudo Google</strong> <span>★★★★★</span></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                </div>
+            <div class="user-comments" id="user-comments">
+                <!-- Les commentaires seront affichés ici -->
             </div>
         </section>
     </main>
 
-    <!----------------------------------------------------------------------------------------------->
-    <!----------------------------------------------------------------------------------------------->
-    <!--------------------------------------- FOOTER------------ ------------------------------------>
-    <!----------------------------------------------------------------------------------------------->
-    <!----------------------------------------------------------------------------------------------->
-
     <footer w3-include-html="/assets/footer.html"></footer>
-    <script src="/JS/include.js"></script> 
+    <script src="/JS/include.js"></script>
+    <script src="/JS/comments.js"></script> <!-- Script pour gérer les commentaires -->
+    
 </body>
 </html>

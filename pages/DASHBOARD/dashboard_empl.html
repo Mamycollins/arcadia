@@ -3,83 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Employé - Zoo Arcadia</title>
+    <title>Tableau de Bord Administrateur - Zoo Arcadia</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body class="accueil-body" onload="includeHTML()">
     <header w3-include-html="/assets/header.html"></header>
 
     <main>
-        <section class="employee-section">
-            <h2>Bienvenue, Employé</h2>
-            <p>Utilisez les options ci-dessous pour gérer vos tâches quotidiennes.</p>
-        </section>
-
-        <!-- Section Tâches Quotidiennes -->
-        <section class="management-section">
-            <h3>Tâches Quotidiennes</h3>
-            <form id="task-form">
-                <div class="form-group">
-                    <label for="task-date">Date :</label>
-                    <input type="date" id="task-date" required>
-                </div>
-                <div class="form-group">
-                    <label for="task-description">Description :</label>
-                    <textarea id="task-description" required></textarea>
-                </div>
-                <button type="button" onclick="addTask()">Ajouter Tâche</button>
-            </form>
-            <div id="task-list">
-                <!-- Liste des tâches dynamiquement remplie par JavaScript -->
-            </div>
-        </section>
-
-        <!-- Section Informations Utiles -->
-        <section class="management-section">
-            <h3>Informations Utiles</h3>
-            <div id="useful-info">
-                <!-- Contenu dynamiquement rempli par JavaScript -->
-            </div>
+        <section>
+            <h2>Bienvenue, Worker</h2>
+            <p>Utilisez les options ci-dessous pour gérer le site.</p>
+            <nav>
+                <ul>
+                    <li><a href="gestionAnimaux.html">Gérer les Animaux</a></li>
+                     <li><a href="gestionComment.html">Gérer les Commentaires</a></li>
+                    <!-- Ajoutez d'autres liens de gestion ici -->
+                </ul>
+            </nav>
         </section>
     </main>
 
-    <footer w3-include-html="/assets/footer.html"></footer>
-
+    <footer w3-include-html="/assets/footer_dash.html"></footer>
     <script src="/js/include.js"></script>
-    <script src="/js/script.js"></script>
-    <script>
-        function addTask() {
-            const date = document.getElementById('task-date').value;
-            const description = document.getElementById('task-description').value;
-            const taskList = document.getElementById('task-list');
-
-            if (date && description) {
-                const taskItem = document.createElement('div');
-                taskItem.className = 'task-item';
-                taskItem.innerHTML = `<p>Date: ${date}</p><p>Description: ${description}</p>`;
-                taskList.appendChild(taskItem);
-
-                // Réinitialiser le formulaire
-                document.getElementById('task-form').reset();
-            } else {
-                alert('Veuillez remplir tous les champs.');
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const usefulInfoDiv = document.getElementById('useful-info');
-            const usefulInfoData = {
-                feedingTimes: 'Les animaux sont nourris à 10h00 et 16h00 chaque jour.',
-                cleaningSchedule: 'Le nettoyage des habitats se fait chaque matin à partir de 8h00.',
-                contactInfo: 'Pour toute question, contactez le superviseur au 01 23 45 67 89.'
-            }; // Exemple de données
-
-            usefulInfoDiv.innerHTML = `
-                <p>Heures de nourrissage : ${usefulInfoData.feedingTimes}</p>
-                <p>Planning de nettoyage : ${usefulInfoData.cleaningSchedule}</p>
-                <p>Informations de contact : ${usefulInfoData.contactInfo}</p>
-            `;
-        });
-    </script>
 </body>
 </html>

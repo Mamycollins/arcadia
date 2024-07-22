@@ -36,10 +36,11 @@ a {
 /* NAVBAR STYLE */
 .navbar {
     position: fixed;
+    display: block;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0);
     z-index: 1000;
     padding: 20px 0;
     text-align: center;
@@ -51,6 +52,13 @@ a {
     padding: 0;
     display: flex;
     justify-content: center;
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    max-height: none;
+}
+
+.navbar ul.active {
+    max-height: 500px; /* Adjust if needed */
 }
 
 .navbar li {
@@ -75,7 +83,48 @@ a {
     width: 100%;
     height: auto;
     display: block;
+    margin-top: 20px;
+    }
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+        background-color: #5B473A;
+        color: white;
+        padding: 10px 20px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        max-height: 0;
+    }
+
+    .navbar ul.active {
+        display: flex;
+        max-height: 500px;
+    }
+
+    .navbar a {
+        display: block;
+        margin: 10px 0;
+    }
 }
+
+@media (min-width: 769px) {
+    .navbar-toggle {
+        display: none;
+    }
+
+    .navbar ul {
+        display: flex;
+        max-height: none;
+    }
+}
+
 
 /* Styles pour footer */
 footer {
@@ -207,34 +256,42 @@ textarea {
 .comments {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
     margin: 20px 0;
     padding: 20px;
     border-radius: 10px;
     color: rgb(182, 163, 141);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .comments h2 {
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 20px;
+    color: #5B473A;
 }
 
 .form-group {
     width: 100%;
     max-width: 600px;
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
 
 .form-group label {
-    display: block;
     margin-bottom: 5px;
+    font-weight: bold;
+    color: #5B473A;
 }
 
 .form-group input, .form-group textarea, .form-group select {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
-    border: none;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: rgba(208, 208, 208, 0.42);
 }
 
 button[type="submit"] {
@@ -245,6 +302,7 @@ button[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 15px;
 }
 
 button[type="submit"]:hover {
@@ -262,14 +320,22 @@ button[type="submit"]:hover {
     padding: 15px;
     border-radius: 10px;
     margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .comment strong {
     font-size: 18px;
+    color: #5B473A;
 }
 
 .comment span {
     color: #FFD700;
+}
+
+select,
+textarea,
+input {
+    color: #946140;
 }
 
 /* Styles services */
@@ -708,10 +774,12 @@ h2 {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 800px;
+    align-items: left;
 }
 
 .management-section h3 {
-    text-align: center;
+    position:inherit;
+    text-align: left;
     color: #ffa500;
     margin-bottom: 20px;
 }
@@ -719,8 +787,9 @@ h2 {
 .management-section .form-group {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
     margin-bottom: 15px;
+    position: relative;   
 }
 
 .management-section label {
@@ -728,6 +797,7 @@ h2 {
     text-align: right;
     margin-right: 10px;
     font-weight: bold;
+    
 }
 
 .management-section input[type="text"],
@@ -753,13 +823,14 @@ h2 {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
+    position: relative;
+    }
 
 .management-section button:hover {
     background-color: #e69500;
 }
 
-/* Gestion animaux */
+/* Gestion */
 .admin-section {
    background-color: rgba(146, 146, 146, 0.125);
     padding: 20px;
@@ -824,26 +895,246 @@ h2 {
     background-color: #cc8400;
 }
 
-/* Media queries */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 90px;
-        letter-spacing: 15px;
+/*********************************************************************************************/
+/**************************************** MEDIA QUERYS ***************************************/
+/*********************************************************************************************/
+
+/* Petits appareils */
+@media (max-width: 576px) {
+    body, html {
+        font-size: 14px;
     }
 
-    button, .button, .index-button {
+    h1 {
+        font-size: 30px;
+        letter-spacing: 2px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+
+    h3 {
+        font-size: 20px;
+        margin-top: 15px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .navbar a {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .articles article, .services article {
+        flex: 1 1 100%;
+        margin: 5px 0;
+    }
+
+    .animal-card {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .management-section, .admin-section {
+        padding: 10px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-group label {
+        text-align: left;
+        margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+    }
+}
+
+/* Tablettes (paysage) */
+@media (min-width: 577px) and (max-width: 768px) {
+    body, html {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 40px;
+        letter-spacing: 3px;
+    }
+
+    h2 {
+        font-size: 28px;
+        margin-top: 25px;
+    }
+
+    h3 {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .navbar a {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .articles article, .services article {
+        flex: 1 1 100%;
+        margin: 10px 0;
+    }
+
+    .animal-card {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .management-section, .admin-section {
+        padding: 15px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-group label {
+        text-align: left;
+        margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+    }
+}
+
+/* Petits ordinateurs portables */
+@media (min-width: 769px) and (max-width: 992px) {
+    body, html {
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 50px;
+        letter-spacing: 5px;
+    }
+
+    h2 {
+        font-size: 32px;
+        margin-top: 30px;
+    }
+
+    h3 {
+        font-size: 28px;
+        margin-top: 25px;
+    }
+
+    .navbar ul {
+        flex-direction: row;
+        padding: 0;
+    }
+
+    .navbar a {
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    .articles article, .services article {
+        flex: 1 1 calc(50% - 40px);
+        margin: 10px;
+    }
+
+    .animal-card {
+        width: calc(50% - 20px);
+        margin: 10px;
+    }
+
+    .management-section, .admin-section {
+        padding: 20px;
+    }
+
+    .form-group {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .form-group label {
+        text-align: right;
+        margin-bottom: 0;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+    }
+}
+
+/* Ordinateurs de bureau */
+@media (min-width: 993px) {
+    body, html {
         font-size: 20px;
     }
 
-    .index-body {
-        background: url('/medias/mobi.jpg') no-repeat center center/cover;
+    h1 {
+        font-size: 60px;
+        letter-spacing: 10px;
     }
 
-    .index-h1 {
-        top: 10vh;
+    h2 {
+        font-size: 36px;
+        margin-top: 40px;
     }
 
-    .index-button {
-        top: 40vh;
+    h3 {
+        font-size: 32px;
+        margin-top: 30px;
+    }
+
+    .navbar ul {
+        flex-direction: row;
+        padding: 0;
+    }
+
+    .navbar a {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .articles article, .services article {
+        flex: 1 1 calc(33.333% - 40px);
+        margin: 10px;
+    }
+
+    .animal-card {
+        width: calc(33.333% - 20px);
+        margin: 10px;
+    }
+
+    .management-section, .admin-section {
+        padding: 25px;
+    }
+
+    .form-group {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .form-group label {
+        text-align: right;
+        margin-bottom: 0;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
     }
 }

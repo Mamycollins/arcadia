@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Commentaires - Arcadia</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="accueil-body" onload="includeHTML(); displayCommentsAdmin()">
+    <header w3-include-html="/assets/header.html"></header>
+
+    <main>
+        <h2>Gestion des Commentaires</h2>
+        <div id="admin-comments" class="management-section">
+            <!-- Les commentaires à valider ou supprimer seront affichés ici -->
+        </div>
+    </main>
+
+    <footer w3-include-html="/assets/footer_dash.html"></footer>
+    <script src="/JS/include.js"></script>
+    <script src="/JS/comments.js"></script> <!-- Reutilisation du script pour gérer les commentaires -->
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+    const commentsDiv = document.getElementById('admin-comments');
+
+    function loadComments() {
+        return JSON.parse(localStorage.getItem('comments')) || [];
+    }
+
+    function displayCommentsAdmin() {
+        commentsDiv.innerHTML = '';
+        const comments = loadComments();
+        comments.forEach((comment, index) => {
+            const commentDiv = document.createElement('div');
+            commentDiv.className = 'comment';
+            commentDiv.innerHTML = `
+                <p><strong>${comment.name}</strong> <span>${'★'.repeat(comment.rating)}</span></p>
+                <p>${comment.comment}</p>
+                <button onclick="approveComment(${index})">Approuver</button>
+                <button onclick="deleteComment(${index})">Supprimer</button>
+            `;
+            commentsDiv.appendChild(commentDiv);
+        });
+    }
+
+    window.approveComment = function(index) {
+        let comments = loadComments();
+        comments[index].approved = true;
+        localStorage.setItem('comments', JSON.stringify(comments));
+        displayCommentsAdmin();
+    };
+
+    window.deleteComment = function(index) {
+        let comments = loadComments();
+        comments.splice(index, 1);
+        localStorage.setItem('comments', JSON.stringify(comments));
+        displayCommentsAdmin();
+    };
+
+    displayCommentsAdmin();
+});
+
+    </script>
+</body>
+</html>

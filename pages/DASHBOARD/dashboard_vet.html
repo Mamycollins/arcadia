@@ -24,8 +24,16 @@
                     <input type="text" id="animal-id" required>
                 </div>
                 <div class="form-group">
+                    <label for="animal-name">Nom de l'Animal :</label>
+                    <input type="text" id="animal-name" required>
+                </div>
+                <div class="form-group">
                     <label for="medical-notes">Notes Médicales :</label>
                     <textarea id="medical-notes" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="appointment-date">Prochain rdv :</label>
+                    <input type="date" id="appointment-date" required>
                 </div>
                 <button type="button" onclick="addMedicalRecord()">Ajouter Dossier Médical</button>
             </form>
@@ -50,20 +58,40 @@
     <script>
         function addMedicalRecord() {
             const animalId = document.getElementById('animal-id').value;
+            const animalName = document.getElementById('animal-name').value;
             const medicalNotes = document.getElementById('medical-notes').value;
+            const appointmentDate = document.getElementById('appointment-date').value;
             const medicalRecordList = document.getElementById('medical-record-list');
 
-            if (animalId && medicalNotes) {
+            if (animalId && animalName && medicalNotes && appointmentDate) {
                 const recordItem = document.createElement('div');
                 recordItem.className = 'record-item';
-                recordItem.innerHTML = `<p>ID de l'Animal: ${animalId}</p><p>Notes Médicales: ${medicalNotes}</p>`;
+                recordItem.innerHTML = `<p>ID de l'Animal: ${animalId}</p>
+                                        <p>Nom de l'Animal: ${animalName}</p>
+                                        <p>Notes Médicales: ${medicalNotes}</p>
+                                        <p>Date du Rendez-vous: ${appointmentDate}</p>
+                                        <button onclick="deleteMedicalRecord(this)">Supprimer</button>`;
                 medicalRecordList.appendChild(recordItem);
+
+                // Enregistrer le dossier médical dans le localStorage
+                let medicalRecords = JSON.parse(localStorage.getItem('medicalRecords')) || [];
+                medicalRecords.push({ animalId, animalName, medicalNotes, appointmentDate });
+                localStorage.setItem('medicalRecords', JSON.stringify(medicalRecords));
 
                 // Réinitialiser le formulaire
                 document.getElementById('medical-record-form').reset();
             } else {
                 alert('Veuillez remplir tous les champs.');
             }
+        }
+
+        function deleteMedicalRecord(button) {
+            const recordItem = button.parentNode;
+            const animalId = recordItem.querySelector('p').innerText.split(': ')[1];
+            let medicalRecords = JSON.parse(localStorage.getItem('medicalRecords')) || [];
+            medicalRecords = medicalRecords.filter(record => record.animalId !== animalId);
+            localStorage.setItem('medicalRecords', JSON.stringify(medicalRecords));
+            recordItem.remove();
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -79,6 +107,20 @@
                 <p>Prochain contrôle de routine : ${usefulInfoData.nextCheckup}</p>
                 <p>Calendrier de vaccination : ${usefulInfoData.vaccinationSchedule}</p>
             `;
+
+            // Charger et afficher les dossiers médicaux existants
+            const medicalRecords = JSON.parse(localStorage.getItem('medicalRecords')) || [];
+            const medicalRecordList = document.getElementById('medical-record-list');
+            medicalRecords.forEach(record => {
+                const recordItem = document.createElement('div');
+                recordItem.className = 'record-item';
+                recordItem.innerHTML = `<p>ID de l'Animal: ${record.animalId}</p>
+                                        <p>Nom de l'Animal: ${record.animalName}</p>
+                                        <p>Notes Médicales: ${record.medicalNotes}</p>
+                                        <p>Date du Rendez-vous: ${record.appointmentDate}</p>
+                                        <button onclick="deleteMedicalRecord(this)">Supprimer</button>`;
+                medicalRecordList.appendChild(recordItem);
+            });
         });
     </script>
 </body>
